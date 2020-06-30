@@ -13,6 +13,13 @@ func SaveUser(user *User) (err error) {
 	return nil
 }
 
+func SaveAccountInfo(account *Account) (err error) {
+	if err = Config.DB.Create(account).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
 func FindAllUser(user *[]User) (err error) {
 	if err = Config.DB.Find(user).Error; err != nil {
 		return err

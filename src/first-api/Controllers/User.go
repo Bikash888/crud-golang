@@ -1,4 +1,4 @@
-package Controller
+package Controllers
 
 import (
 	"first/src/first-api/Model"

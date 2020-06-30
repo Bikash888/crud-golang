@@ -9,6 +9,7 @@ import (
 func SetUpRouter() *gin.Engine {
 
 	r := gin.Default()
+
 	u1 := r.Group("/admin")
 	{
 		u1.POST("save", Controller.CreateUser)
@@ -16,7 +17,9 @@ func SetUpRouter() *gin.Engine {
 		u1.GET("user/:id", Controller.GetUserById)
 		u1.PUT("update/:id", Controller.UpdateUserById)
 		u1.DELETE("delete/:id", Controller.DeleteUserById)
-
+		u1.POST("upload", Controller.UploadSingleFile)
+		u1.POST("multiple", Controller.UploadMultipleFile)
+		u1.POST("mail",Controller.MailSender)
 	}
 	return r
 
