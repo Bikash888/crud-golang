@@ -3,8 +3,8 @@ package Controllers
 import (
 	"bytes"
 	"fmt"
+	"html/template"
 	"net/smtp"
-	"text/template"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,7 +24,7 @@ func MailSender(c *gin.Context){
 	
 	m:= NewRequestToSendMail([]string{"mail@golang.com"}, "Hello golang!", "Hello, World!")
     err := m.ParseTemplate("index.html", indexTemplateData)
-    if err != nil {
+    if err == nil {
 		fmt.Println(err)
         ok, _ := m.SendEmail()
         fmt.Println(ok)
@@ -59,11 +59,11 @@ func (r *RequestToSendMail) ParseTemplate(templateName string,data interface{})e
 	return nil
 }
 func (r *RequestToSendMail)SendEmail()(bool,error){
-	mime :="MIME-version: 1.0;\nContent-Type: text/plain; charset=\"UTF-8\";\n\n"
+	mime :="MIME-version: 1.0;\nContent-Type: text/html; charset=\"UTF-8\";\n\n"
 	subject :="Subject: "+r.subject+"\n"
 	msg :=[]byte(subject + mime + "\n" + r.message)
 	address :="smtp.mailtrap.io:25"
-	if err := smtp.SendMail(address, auth, "dhanush@geektrust.in", r.to, msg); err != nil {
+	if err := smtp.SendMail(address, auth, "89cc9543aa58eb", r.to, msg); err != nil {
 	   fmt.Println(err)
 		return false, err
     }

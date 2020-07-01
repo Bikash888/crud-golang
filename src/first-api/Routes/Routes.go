@@ -19,7 +19,8 @@ func SetUpRouter() *gin.Engine {
 		u1.DELETE("delete/:id", Controller.DeleteUserById)
 		u1.POST("upload", Controller.UploadSingleFile)
 		u1.POST("multiple", Controller.UploadMultipleFile)
-		u1.POST("mail",Controller.MailSender)
+		u1.POST("mail", Controller.MailSender)
+		u1.POST("auth", Controller.Login)
 	}
 	return r
 
