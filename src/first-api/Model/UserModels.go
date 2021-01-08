@@ -1,26 +1,18 @@
-package Model
+package models
 
-import "github.com/jinzhu/gorm"
+import "gorm.io/gorm"
 
 type User struct {
-	ID        uint   `gorm:"primaryKey"`
-	Name      string `json:"name"`
-	Email     string `json:"email"`
-	Phone     string `json:"phone"`
-	Address   string `json:"address"`
-	AccountID uint
-}
-type Account struct {
 	gorm.Model
-	AccountType   string `json:"account"`
-	AccountNumber string
-	Amount        int
-	Branch        string
+	Name  string `json:"name"`
+	Email string `json:"email"`
+}
+type Pagination struct {
+	Limit int    `json:"limit"`
+	Page  int    `json:"page"`
+	Sort  string `json:"sort"`
 }
 
 func (b *User) TableName() string {
 	return "user"
-}
-func (a *Account) TableName() string {
-	return "account"
 }

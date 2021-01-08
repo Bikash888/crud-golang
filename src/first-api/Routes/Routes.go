@@ -12,15 +12,9 @@ func SetUpRouter() *gin.Engine {
 
 	u1 := r.Group("/admin")
 	{
-		u1.POST("save", Controller.CreateUser)
+
 		u1.GET("all", Controller.GetAllUsers)
-		u1.GET("user/:id", Controller.GetUserById)
-		u1.PUT("update/:id", Controller.UpdateUserById)
-		u1.DELETE("delete/:id", Controller.DeleteUserById)
-		u1.POST("upload", Controller.UploadSingleFile)
-		u1.POST("multiple", Controller.UploadMultipleFile)
-		u1.POST("mail", Controller.MailSender)
-		u1.POST("auth", Controller.Login)
+
 	}
 	return r
 

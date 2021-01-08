@@ -17,4 +17,5 @@ require (
 	golang.org/x/sys v0.0.0-20200620081246-981b61492c35 // indirect
 	google.golang.org/protobuf v1.24.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
+	gorm.io/gorm v1.20.9
 )
