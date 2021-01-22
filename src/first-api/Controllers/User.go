@@ -25,7 +25,7 @@ func GetAllUsers(c *gin.Context) {
 
 	pagination := utils.GeneratePaginationFromRequest(c)
 	var user models.User
-	userLists, err := repo.GetAllUsers(&user, &pagination)
+	userLists, totalRows, err := repo.GetAllUsers(&user, &pagination)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -35,7 +35,8 @@ func GetAllUsers(c *gin.Context) {
 
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"data": userLists,
+		"data":      userLists,
+		"totalList": totalRows,
 	})
 
 }
