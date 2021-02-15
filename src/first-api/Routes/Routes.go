@@ -14,6 +14,7 @@ func SetUpRouter() *gin.Engine {
 	{
 
 		u1.GET("all", Controller.GetAllUsers)
+		u1.POST("all", Controller.SendMailUsingMailer)
 
 	}
 	return r
