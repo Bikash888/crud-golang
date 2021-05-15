@@ -20,13 +20,10 @@ func GeneratePaginationFromRequest(c *gin.Context) models.Pagination {
 		switch key {
 		case "limit":
 			limit, _ = strconv.Atoi(queryValue)
-			break
 		case "page":
 			page, _ = strconv.Atoi(queryValue)
-			break
 		case "sort":
 			sort = queryValue
-			break
 
 		}
 	}
